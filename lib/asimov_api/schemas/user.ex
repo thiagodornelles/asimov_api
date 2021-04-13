@@ -1,4 +1,4 @@
-defmodule ExMon.Schemas.User do
+defmodule AsimovApi.Schemas.User do
   use Ecto.Schema
   import Ecto.Changeset
 
