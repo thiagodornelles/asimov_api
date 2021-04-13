@@ -10,9 +10,9 @@ defmodule AsimovApiWeb.Endpoint do
     signing_salt: "/3Zd0gze"
   ]
 
-  socket "/socket", AsimovApiWeb.UserSocket,
-    websocket: true,
-    longpoll: false
+  # socket "/socket", AsimovApiWeb.UserSocket,
+  #   websocket: true,
+  #   longpoll: false
 
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 

@@ -1,0 +1,3 @@
+defmodule UserController do
+
+end
