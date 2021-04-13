@@ -1,5 +1,7 @@
 # AsimovApi
 
+API para automações
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
