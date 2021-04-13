@@ -1,5 +1,5 @@
 defmodule UserController do
-  use AsimovApi, :controller
+  use AsimovApiWeb, :controller
 
   alias AsimovApi.User
   alias AsimovApi.Guardian
@@ -9,7 +9,7 @@ defmodule UserController do
          {:ok, token, _claims} <- Guardian.encode_and_sign(user) do
       conn
       |> put_status(:created)
-      |> render("create.json", %{trainer: trainer, token: token})
+      |> render("create.json", %{user: user, token: token})
     end
   end
 
