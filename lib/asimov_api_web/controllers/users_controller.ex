@@ -27,6 +27,8 @@ defmodule AsimovApiWeb.UsersController do
     |> render(view, user: user)
   end
 
-  defp handle_response({:error, _changeset} = error, _conn, _view, _status), do: error
+  defp handle_response({:error, _changeset} = error, _conn, _view, _status) do
+    error
+  end
 
 end
