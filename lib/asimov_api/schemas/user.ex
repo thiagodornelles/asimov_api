@@ -1,8 +1,8 @@
-defmodule ExMon.User do
+defmodule ExMon.Schemas.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  @primary_key {:id, :id , autogenerate: true}
+  @primary_key {:id, :id, autogenerate: true}
 
   schema "users" do
     field :name, :string
@@ -40,5 +40,7 @@ defmodule ExMon.User do
     change(changeset, Argon2.add_hash(password))
   end
 
-  defp put_pass_hash(changeset), do: changeset
+  defp put_pass_hash(changeset) do
+    changeset
+  end
 end
