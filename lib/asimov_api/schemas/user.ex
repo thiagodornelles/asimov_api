@@ -24,12 +24,12 @@ defmodule ExMon.Schemas.User do
     create_changeset(%__MODULE__{}, params)
   end
 
-  def changeset(trainer, params) do
-    create_changeset(trainer, params)
+  def changeset(user, params) do
+    create_changeset(user, params)
   end
 
-  defp create_changeset(module_or_trainer, params) do
-    module_or_trainer
+  defp create_changeset(module_or_user, params) do
+    module_or_user
     |> cast(params, @required_params)
     |> validate_required(@required_params)
     |> validate_length(:password, min: 6)
