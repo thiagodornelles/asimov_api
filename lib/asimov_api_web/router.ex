@@ -7,13 +7,9 @@ defmodule AsimovApiWeb.Router do
 
   scope "/api", AsimovApiWeb do
     pipe_through :api
-  end
-
-  scope "/api", ExMonWeb do
-    pipe_through :api
-    post "/users", UserController, :create
-    post "/users/signin", UserController, :sign_in
-    resources "/users", UserController, only: [:show, :delete, :update]
+    #post "/users", UserController, :create
+    #post "/users/signin", UserController, :sign_in
+    resources "/users", UsersController, only: [:show] #, :delete, :update]
   end
 
 

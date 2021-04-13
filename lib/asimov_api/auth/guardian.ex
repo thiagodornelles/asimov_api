@@ -2,7 +2,7 @@ defmodule AsimovApi.Auth.Guardian do
   use Guardian, otp_app: :ex_mon
 
   alias AsimovApi.Repo
-  alias AsimovApi.User
+  alias AsimovApi.Schemas.User
 
   def subject_for_token(user, _claims) do
     sub = to_string(user.id)
@@ -18,19 +18,19 @@ defmodule AsimovApi.Auth.Guardian do
   def authenticate(%{"id" => user_id, "password" => password}) do
     case Repo.get(User, user_id) do
       nil -> {:error, "User not found"}
-      user -> validate_password(User, password)
+      user -> validate_password(user, password)
     end
   end
 
-  def validate_password(%User{password_hash: hash} = User, password) do
+  def validate_password(%User{password_hash: hash} = user, password) do
     case Argon2.verify_pass(password, hash) do
-      true -> create_token(User)
+      true -> create_token(user)
       false -> {:error, :unauthorized}
     end
   end
 
-  defp create_token(User) do
-    {:ok, token, _claims} = encode_and_sign(User)
+  defp create_token(user) do
+    {:ok, token, _claims} = encode_and_sign(user)
     {:ok, token}
   end
 end
