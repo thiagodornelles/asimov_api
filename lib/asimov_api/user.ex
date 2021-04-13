@@ -12,7 +12,7 @@ defmodule ExMon.User do
     timestamps()
   end
 
-  @required_params [:name, :password]
+  @required_params [:name, :email, :password]
 
   def build(params) do
     params
