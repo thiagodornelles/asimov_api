@@ -1,0 +1,89 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "definitions": {},
+  "host": "localhost:4000",
+  "info": {
+    "contact": {
+      "email": "thiago.azevedo87@gmail.com",
+      "name": "Thiago Dornelles"
+    },
+    "description": "API Documentation for Asimov",
+    "termsOfService": "Open for public",
+    "title": "AsimovAPI",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/create": {
+      "post": {
+        "description": "Create an user",
+        "operationId": "AsimovApiWeb.UsersController.create",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        },
+        "summary": "Create an user",
+        "tags": [
+          "users"
+        ]
+      }
+    },
+    "/api/users/{id}": {
+      "get": {
+        "description": "Get users, filtering by account ID",
+        "operationId": "AsimovApiWeb.UsersController.show",
+        "parameters": [
+          {
+            "description": "account id",
+            "in": "id",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Description",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        },
+        "summary": "Get users",
+        "tags": [
+          "users"
+        ]
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http",
+    "https",
+    "ws",
+    "wss"
+  ],
+  "securityDefinitions": {
+    "Bearer": {
+      "description": "API Token must be provided via `Authorization: Bearer ` header",
+      "in": "header",
+      "name": "Authorization",
+      "type": "apiKey"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "description": "User resources",
+      "name": "Users"
+    }
+  ]
+}

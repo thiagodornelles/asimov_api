@@ -7,11 +7,46 @@ defmodule AsimovApiWeb.Router do
 
   scope "/api", AsimovApiWeb do
     pipe_through :api
-    #post "/users", UserController, :create
-    #post "/users/signin", UserController, :sign_in
-    resources "/users", UsersController, only: [:show] #, :delete, :update]
+    post "/users", UsersController, :create
+    post "/users/signin", UsersController, :sign_in
+    # , :delete, :update]
+    resources "/users", UsersController, only: [:show]
   end
 
+  scope "/api/swagger" do
+    forward "/", PhoenixSwagger.Plug.SwaggerUI,
+      otp_app: :asimov_api,
+      swagger_file: "swagger.json"
+  end
+
+  def swagger_info do
+    %{
+      schemes: ["http", "https", "ws", "wss"],
+      info: %{
+        version: "1.0",
+        title: "AsimovAPI",
+        description: "API Documentation for Asimov",
+        termsOfService: "Open for public",
+        contact: %{
+          name: "Thiago Dornelles",
+          email: "thiago.azevedo87@gmail.com"
+        }
+      },
+      securityDefinitions: %{
+        Bearer: %{
+          type: "apiKey",
+          name: "Authorization",
+          description: "API Token must be provided via `Authorization: Bearer ` header",
+          in: "header"
+        }
+      },
+      consumes: ["application/json"],
+      produces: ["application/json"],
+      tags: [
+        %{name: "Users", description: "User resources"}
+      ]
+    }
+  end
 
   # Enables LiveDashboard only for development
   #
