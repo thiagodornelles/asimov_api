@@ -9,6 +9,14 @@ defmodule AsimovApiWeb.Router do
     pipe_through :api
   end
 
+  scope "/api", ExMonWeb do
+    pipe_through :api
+    post "/users", UserController, :create
+    post "/users/signin", UserController, :sign_in
+    resources "/users", UserController, only: [:show, :delete, :update]
+  end
+
+
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
