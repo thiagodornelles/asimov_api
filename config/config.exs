@@ -33,7 +33,9 @@ import_config "#{Mix.env()}.exs"
 
 config :asimov_api, AsimovApiWeb.Auth.Guardian,
   issuer: "asimov_api",
-  secret_key: "70am0IHk8GQ8dfYOFfnY+5gxa2Ucj37uGlL5Al8zW+TzcoCl+wfboDZ3BC1pcJHx"
+  secret_key: "7fxwGnLngWGO8e7iZskbvfYEnnkDDITkOod6zXqiXJvTwWMXB0lG6gFp1ApVnixd",
+  ttl: {10, :minute},
+  allowed_drift: 2000
 
 config :asimov_api, AsimovApiWeb.Auth.Pipeline,
   module: AsimovApiWeb.Auth.Guardian,

@@ -12,7 +12,7 @@ defmodule AsimovApiWeb.UsersController do
     summary "Create an user"
     description "Create an user"
     # parameter :ery, :id, :integer, "account id", required: true
-    response 200, "Description", :user
+    response 200, "Description", :users
     tag "users"
   end
 

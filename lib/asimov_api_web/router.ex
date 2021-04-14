@@ -5,10 +5,18 @@ defmodule AsimovApiWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug AsimovApiWeb.Auth.Pipeline
+  end
+
   scope "/api", AsimovApiWeb do
     pipe_through :api
-    post "/users", UsersController, :create
     post "/users/signin", UsersController, :sign_in
+  end
+
+  scope "/api", AsimovApiWeb do
+    pipe_through [:api, :auth]
+    post "/users", UsersController, :create
     resources "/users", UsersController, only: [:show]
   end
 
@@ -35,14 +43,14 @@ defmodule AsimovApiWeb.Router do
         Bearer: %{
           type: "apiKey",
           name: "Authorization",
-          description: "API Token must be provided via `Authorization: Bearer ` header",
+          description: "API Token must be provided via `Authorization:Bearer ` header",
           in: "header"
         }
       },
       consumes: ["application/json"],
       produces: ["application/json"],
       tags: [
-        %{name: "Users", description: "User resources"}
+        %{name: "users", description: "User resources"}
       ]
     }
   end
