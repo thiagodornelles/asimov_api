@@ -8,12 +8,15 @@ defmodule AsimovApiWeb.UsersController do
   action_fallback AsimovApiWeb.FallbackController
 
   swagger_path :create do
-    post "/api/create"
-    summary "Create an user"
+    post "/api/users"
     description "Create an user"
-    # parameter :ery, :id, :integer, "account id", required: true
-    response 200, "Description", :users
-    tag "users"
+    parameters do
+      name :query, :string, "User name", required: true, example: 42
+      email :query, :string, "User email", required: true
+      password :query, :string, "User password", required: true
+    end
+    security [%{Bearer: []}]
+    response 200, "Returns data from the created user"
   end
 
   def create(conn, params) do
@@ -23,6 +26,16 @@ defmodule AsimovApiWeb.UsersController do
       |> put_status(:created)
       |> render("create.json", %{user: user, token: token})
     end
+  end
+
+  swagger_path :sign_in do
+    post "/api/users/signin"
+    description "Sign in to the API"
+    parameters do
+      id :query, :integer, "User ID", required: true, example: 42
+      password :query, :string, "User password", required: true
+    end
+    response 200, "Returns the JWT token"
   end
 
   def sign_in(conn, params) do
@@ -35,11 +48,10 @@ defmodule AsimovApiWeb.UsersController do
 
   swagger_path :show do
     get "/api/users/{id}"
-    summary "Get users"
     description "Get an user by ID"
-    parameter :id, :path, :integer, "User ID", required: true, example: 3
-    response 200, "Description", :users
-    tag "users"
+    parameter :id, :path, :integer, "User ID", required: true, example: 42
+    security [%{Bearer: []}]
+    response 200, "Returns users data"
   end
 
   def show(conn, %{"id" => id}) do

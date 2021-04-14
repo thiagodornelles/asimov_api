@@ -28,9 +28,9 @@ defmodule AsimovApiWeb.Router do
 
   def swagger_info do
     %{
-      schemes: ["http", "https", "ws", "wss"],
+      schemes: ["http", "https"],
       info: %{
-        version: "1.0",
+        version: "0.1",
         title: "AsimovAPI",
         description: "API Documentation for Asimov",
         termsOfService: "Open for public",
@@ -43,15 +43,12 @@ defmodule AsimovApiWeb.Router do
         Bearer: %{
           type: "apiKey",
           name: "Authorization",
-          description: "API Token must be provided via `Authorization:Bearer ` header",
+          description: "API Token must be provided via `Authorization: Bearer ` header",
           in: "header"
         }
       },
       consumes: ["application/json"],
-      produces: ["application/json"],
-      tags: [
-        %{name: "users", description: "User resources"}
-      ]
+      produces: ["application/json"]
     }
   end
 

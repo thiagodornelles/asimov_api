@@ -12,25 +12,82 @@
     "description": "API Documentation for Asimov",
     "termsOfService": "Open for public",
     "title": "AsimovAPI",
-    "version": "1.0"
+    "version": "0.1"
   },
   "paths": {
-    "/api/create": {
+    "/api/users": {
       "post": {
         "description": "Create an user",
         "operationId": "AsimovApiWeb.UsersController.create",
-        "parameters": [],
+        "parameters": [
+          {
+            "description": "User name",
+            "in": "query",
+            "name": "name",
+            "required": true,
+            "type": "string",
+            "x-example": 42
+          },
+          {
+            "description": "User email",
+            "in": "query",
+            "name": "email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "User password",
+            "in": "query",
+            "name": "password",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/user"
-            }
+            "description": "Returns data from the created user"
           }
         },
-        "summary": "Create an user",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "",
         "tags": [
-          "users"
+          "Users"
+        ]
+      }
+    },
+    "/api/users/signin": {
+      "post": {
+        "description": "Sign in to the API",
+        "operationId": "AsimovApiWeb.UsersController.sign_in",
+        "parameters": [
+          {
+            "description": "User ID",
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "type": "integer",
+            "x-example": 42
+          },
+          {
+            "description": "User password",
+            "in": "query",
+            "name": "password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns the JWT token"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Users"
         ]
       }
     },
@@ -45,20 +102,22 @@
             "name": "id",
             "required": true,
             "type": "integer",
-            "x-example": 3
+            "x-example": 42
           }
         ],
         "responses": {
           "200": {
-            "description": "Description",
-            "schema": {
-              "$ref": "#/definitions/users"
-            }
+            "description": "Returns users data"
           }
         },
-        "summary": "Get users",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "",
         "tags": [
-          "users"
+          "Users"
         ]
       }
     }
@@ -68,9 +127,7 @@
   ],
   "schemes": [
     "http",
-    "https",
-    "ws",
-    "wss"
+    "https"
   ],
   "securityDefinitions": {
     "Bearer": {
@@ -80,11 +137,5 @@
       "type": "apiKey"
     }
   },
-  "swagger": "2.0",
-  "tags": [
-    {
-      "description": "User resources",
-      "name": "users"
-    }
-  ]
+  "swagger": "2.0"
 }
