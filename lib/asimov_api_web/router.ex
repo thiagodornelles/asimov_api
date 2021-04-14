@@ -9,7 +9,6 @@ defmodule AsimovApiWeb.Router do
     pipe_through :api
     post "/users", UsersController, :create
     post "/users/signin", UsersController, :sign_in
-    # , :delete, :update]
     resources "/users", UsersController, only: [:show]
   end
 

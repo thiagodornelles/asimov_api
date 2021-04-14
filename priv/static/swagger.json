@@ -24,7 +24,7 @@
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/Users"
+              "$ref": "#/definitions/user"
             }
           }
         },
@@ -36,22 +36,23 @@
     },
     "/api/users/{id}": {
       "get": {
-        "description": "Get users, filtering by account ID",
+        "description": "Get an user by ID",
         "operationId": "AsimovApiWeb.UsersController.show",
         "parameters": [
           {
-            "description": "account id",
-            "in": "id",
+            "description": "User ID",
+            "in": "path",
             "name": "id",
             "required": true,
-            "type": "integer"
+            "type": "integer",
+            "x-example": 3
           }
         ],
         "responses": {
           "200": {
             "description": "Description",
             "schema": {
-              "$ref": "#/definitions/Users"
+              "$ref": "#/definitions/users"
             }
           }
         },

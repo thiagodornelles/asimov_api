@@ -1,5 +1,5 @@
-defmodule AsimovApi.Auth.Guardian do
-  use Guardian, otp_app: :ex_mon
+defmodule AsimovApiWeb.Auth.Guardian do
+  use Guardian, otp_app: :asimov_api
 
   alias AsimovApi.Repo
   alias AsimovApi.Schemas.User

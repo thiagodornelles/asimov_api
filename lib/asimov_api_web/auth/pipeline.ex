@@ -1,4 +1,4 @@
-defmodule AsimovApi.Auth.Pipeline do
+defmodule AsimovApiWeb.Auth.Pipeline do
   use Guardian.Plug.Pipeline, otp_app: :asimov_api
 
   plug Guardian.Plug.VerifyHeader

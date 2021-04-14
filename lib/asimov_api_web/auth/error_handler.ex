@@ -1,4 +1,4 @@
-defmodule AsimovApi.Auth.ErrorHandler do
+defmodule AsimovApiWeb.Auth.ErrorHandler do
   import Plug.Conn
   @behaviour Guardian.Plug.ErrorHandler
 

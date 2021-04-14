@@ -31,9 +31,13 @@ config :phoenix_swagger, json_library: Jason
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
 
-config :asimov_api, AsimovApiWeb,
-  issuer: "Asimov_Api",
-  secret_key: "9Q27STG9UNT7mfUmQXe4GOr/9IQXAW905Yp1xJMm4E0zrpiKmylTL+GK1LRUXXjP"
+config :asimov_api, AsimovApiWeb.Auth.Guardian,
+  issuer: "asimov_api",
+  secret_key: "70am0IHk8GQ8dfYOFfnY+5gxa2Ucj37uGlL5Al8zW+TzcoCl+wfboDZ3BC1pcJHx"
+
+config :asimov_api, AsimovApiWeb.Auth.Pipeline,
+  module: AsimovApiWeb.Auth.Guardian,
+  error_handler: AsimovApiWeb.Auth.ErrorHandler
 
 config :asimov_api, :phoenix_swagger,
   swagger_files: %{

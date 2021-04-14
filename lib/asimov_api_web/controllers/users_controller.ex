@@ -3,7 +3,7 @@ defmodule AsimovApiWeb.UsersController do
   use PhoenixSwagger
 
   alias AsimovApi.User
-  alias AsimovApi.Guardian
+  alias AsimovApiWeb.Auth.Guardian
 
   action_fallback AsimovApiWeb.FallbackController
 
@@ -12,7 +12,7 @@ defmodule AsimovApiWeb.UsersController do
     summary "Create an user"
     description "Create an user"
     # parameter :ery, :id, :integer, "account id", required: true
-    response 200, "Description", :Users
+    response 200, "Description", :user
     tag "users"
   end
 
@@ -38,7 +38,7 @@ defmodule AsimovApiWeb.UsersController do
     summary "Get users"
     description "Get an user by ID"
     parameter :id, :path, :integer, "User ID", required: true, example: 3
-    response 200, "Description", :Users
+    response 200, "Description", :users
     tag "users"
   end
 
