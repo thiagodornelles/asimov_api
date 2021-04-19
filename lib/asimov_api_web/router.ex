@@ -18,6 +18,7 @@ defmodule AsimovApiWeb.Router do
     pipe_through [:api, :auth]
     post "/users", UsersController, :create
     resources "/users", UsersController, only: [:show]
+    resources "/scripts", ScriptsController, only: [:create]
   end
 
   scope "/api/swagger" do
