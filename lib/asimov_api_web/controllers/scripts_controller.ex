@@ -5,8 +5,8 @@ defmodule AsimovApiWeb.ScriptsController do
   action_fallback AsimovApiWeb.FallbackController
 
   swagger_path :create do
-    post("/api/users")
-    description("Create an user")
+    post("/api/scripts")
+    description("Create a new script")
 
     parameters do
       name(:query, :string, "User name", required: true, example: 42)

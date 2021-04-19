@@ -15,9 +15,9 @@
     "version": "0.1"
   },
   "paths": {
-    "/api/users": {
+    "/api/scripts": {
       "post": {
-        "description": "Create an user",
+        "description": "Create a new script",
         "operationId": "AsimovApiWeb.ScriptsController.create",
         "parameters": [
           {
@@ -56,6 +56,50 @@
         "summary": "",
         "tags": [
           "Scripts"
+        ]
+      }
+    },
+    "/api/users": {
+      "post": {
+        "description": "Create an user",
+        "operationId": "AsimovApiWeb.UsersController.create",
+        "parameters": [
+          {
+            "description": "User name",
+            "in": "query",
+            "name": "name",
+            "required": true,
+            "type": "string",
+            "x-example": 42
+          },
+          {
+            "description": "User email",
+            "in": "query",
+            "name": "email",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "description": "User password",
+            "in": "query",
+            "name": "password",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns data from the created user"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "",
+        "tags": [
+          "Users"
         ]
       }
     },
