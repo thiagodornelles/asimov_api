@@ -33,6 +33,7 @@ defmodule AsimovApi.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:export, "~> 0.1.0"},
       {:phoenix, "~> 1.5.8"},
       {:phoenix_ecto, "~> 4.1"},
       {:ecto_sql, "~> 3.4"},
