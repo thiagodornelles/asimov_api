@@ -18,7 +18,7 @@
     "/api/users": {
       "post": {
         "description": "Create an user",
-        "operationId": "AsimovApiWeb.UsersController.create",
+        "operationId": "AsimovApiWeb.ScriptsController.create",
         "parameters": [
           {
             "description": "User name",
@@ -55,7 +55,7 @@
         ],
         "summary": "",
         "tags": [
-          "Users"
+          "Scripts"
         ]
       }
     },

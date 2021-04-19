@@ -1,4 +1,4 @@
-defmodule AsimovWeb.ScriptsController do
+defmodule AsimovApiWeb.ScriptsController do
   use AsimovApiWeb, :controller
   use PhoenixSwagger
 
@@ -21,6 +21,6 @@ defmodule AsimovWeb.ScriptsController do
   def create(conn, params) do
     conn
     |> put_status(:created)
-    |> render("create.json", %{})
+    |> render("create.json", params)
   end
 end
