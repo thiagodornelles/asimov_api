@@ -7,7 +7,7 @@ defmodule ElixirPython do
   Calls the given function with args from the given Python file.
   """
   def python_call(file, function, args \\ []) do
-    String.replace(file, "../", "")
+    file = String.replace(file, "../", "")
     {:ok, py} = Python.start(python_path: Path.expand(@python_dir))
     Python.call(py, file, function, args)
   end
