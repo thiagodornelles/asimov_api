@@ -1,18 +1,16 @@
-defmodule AsimovApi.Schemas.User do
+defmodule AsimovApi.Schemas.URLPermission do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias AsimovApiWeb.Schemas.URLPermission
+  alias AsimovApiWeb.Schemas.User
 
   @primary_key {:id, :id, autogenerate: true}
 
-  schema "users" do
-    field :name, :string
-    field :email, :string
-    field :password_hash, :string
-    field :password, :string, virtual: true
+  schema "url_permissions" do
+    field :url, :string
+    field :method, :string
 
-    has_many :url_permissions, URLPermission
+    belongs_to :user, User
     timestamps()
   end
 

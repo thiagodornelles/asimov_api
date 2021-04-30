@@ -7,6 +7,7 @@ defmodule AsimovApiWeb.Router do
 
   pipeline :auth do
     plug AsimovApiWeb.Auth.Pipeline
+    plug AsimovApiWeb.Auth.URLAuthorizer
   end
 
   scope "/api", AsimovApiWeb do
